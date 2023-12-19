@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+         }  
+         
+         *:focus{
+            outline: none;
+         }
+
+         body{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('../images/Login page.jpg');
+            background-image: linear-gradient(20);
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .form{
+            width: 400px;
+            height: auto;
+            color: rgb(10, 10, 10);
+
+        }
+
+        .heading{
+            text-transform: capitalize;
+            text-align: center;
+            font-size: 80px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            color: black;
+
+        }
+
+
+        input {
+            width: 80%;
+            height: 40px;
+            display: block;
+            margin: 20px  auto;
+            border-radius: 5px;
+            background: rgba(189, 186, 9, 0.3);
+            border: none;
+            transition: .3s;
+            
+        }
+        .sumbit-btn {
+            width: 80%;
+            height: 38px;
+            display: block;
+            margin: 20px  auto;
+            border-radius: 5px;
+            background: rgba(195, 8, 8, 0.3);
+            border: none;
+            transition: .3s;
+            text-transform: capitalize;
+        }
+
+        input::placeholder{
+            color: #0f0e0e;
+        }
+
+        input:focus{
+            background-color: rgb(103, 230, 71);
+            color: rgb(239, 235, 235)!important;
+        }
+
+        .sumbit-btn:hover{
+            background-color: rgb(77, 157, 61);
+            color: rgb(239, 235, 235);
+        }
+
+
+        .sumbit-btn{
+            width: auto;
+            padding: 0 20px;
+            cursor: pointer;
+            margin: 50px auto 0;
+        }
+
+        .link{
+             text-align: center;
+             display: block;
+             margin: 30px auto;
+             text-decoration: none;
+        }
+
+
+        input[type=email],input[type=password]{
+        padding-left: 10px;
+        font-size:18px ;
+    }
+      
+    </style>
+</head>
+<body>
+
+      
+
+
+
+      <div class="form">
+        <h1 class="heading">login</h1>
+        <input type="email" placeholder="Email" id="email" autocomplete="off" required>
+        <input type="password" placeholder="Password" id="password" autocomplete="off" required>
+        <button class="sumbit-btn" onclick="saveData()">Submit</button>
+        <a href="registerpage.html"  class="link">Don't have an account?<span style="text-decoration: underline;color: blue;">Register</span></a>
+      </div>
+
+ 
+    
+    <script>
+        function saveData(){
+           
+            let email=document.getElementById('email').value;
+            let password=document.getElementById('password').value;   
+   
+
+            let user_datas=new Array();
+            user_datas=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+              
+
+            if(user_datas.some((a)=>{
+               return a.email==email && a.password==password
+            })){
+               alert("login succesfully");   
+               current_user=user_datas.filter((item)=>{
+                return item.email==email && item.password==password;
+
+               })[0]
+
+
+               localStorage.setItem("name",current_user.name);
+               localStorage.setItem("email",current_user.email);
+               window.location.href="Star.html";
+            }
+
+            else{
+                alert("Login failed");
+            }
+
+            
+        }
+    </script>
+</body>
+</html>

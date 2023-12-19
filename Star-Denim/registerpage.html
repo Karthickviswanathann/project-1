@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<style>
+     *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+         }  
+         
+         *:focus{
+            outline: none;
+         }
+
+         body{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('../images/Login page.jpg');
+            background-image: linear-gradient(20);
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .form{
+            width: 400px;
+            height: auto;
+            color: rgb(10, 10, 10);
+
+        }
+
+        .form button{
+            margin-top: 30px ;  
+            margin-left: 90px;
+            height: 38px;
+            border-radius: 5px;
+            display: inline;
+            border: none;
+            transition: .3s;
+            text-transform: capitalize;
+            width: 90px;
+            padding: 0 20px; 
+            
+        }
+
+        .heading{
+            text-transform: capitalize;
+            text-align: center;
+            font-size: 80px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            color: black;
+
+        }
+
+
+        input {
+            width: 80%;
+            height: 40px;
+            display: block;
+            margin: 20px  auto;
+            border-radius: 5px;
+            background: rgba(113, 111, 111,0.3);
+            border: none;
+            transition: .3s;
+            
+        }
+
+         .sumbit-btn {
+            
+            background: rgba(195, 8, 8, 0.3);
+            cursor: pointer;
+            margin-right: -60px;
+
+        }
+
+        .Reset {
+            background: rgba(195, 139, 8, 0.3);
+            cursor: pointer;
+
+
+        } 
+
+
+        input::placeholder{
+            color: #0f0e0e;
+        }
+
+        input:focus{
+            background-color: rgb(103, 230, 71);
+            color: rgb(239, 235, 235)!important;
+        }
+
+        .sumbit-btn:hover{
+            background-color: rgb(77, 157, 61);
+            color: rgb(239, 235, 235);
+        }
+
+        .Reset:hover{
+            background-color: rgb(61, 127, 157);
+            color: rgb(239, 235, 235);
+        }
+
+
+        .link{
+             text-align: center;
+             display: block;
+             margin: 30px auto;
+             text-decoration: none;
+        }
+
+        .alert-box{
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 150px;
+            max-width:90%;
+            width: auto;
+            height: auto;
+            padding: 10px;
+            text-transform: capitalize;
+            background: rgba(255, 0, 0, 0.542);
+            border: 3px solid rgb(179, 20, 20);
+            border-radius: 5px;
+            color: rgb(241, 237, 237);
+            text-align: center;
+            transition: 1s;
+        }
+
+        input[type=text],input[type=email],input[type=password]{
+        padding-left: 10px;
+        font-size:18px ;
+}
+
+</style>
+<body>
+    <div class="form">
+        <h1 class="heading">Register</h1>
+        <input type="text" placeholder="Name" id="name" autocomplete="off" required>
+        <input type="email" placeholder="Email" id="email" autocomplete="off" required>
+        <input type="password" placeholder="Password" id="pass" autocomplete="off" required>
+        <!-- <input type="password" placeholder="Confirm Password" id="cpassword" autocomplete="off" required> -->
+        <button  type="submit" class="sumbit-btn" onclick="saveData()">Submit</button>
+        <button type="reset" class="Reset"  onclick="reset()" >Reset</button>
+        <a href="loginpage.html"  class="link">Already have an account? <span style="text-decoration:underline; color: blue;">Login here</span></a>
+
+    </div>
+
+
+
+
+
+ <script>
+
+  
+
+    // function passFormat(pass){
+    //     const pFormat ="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";
+    //     return pFormat.test(pass);
+    // }
+
+    // function userFormat(UR){
+    //     const useR="/[^0-9]/";
+    //     return useR.test(UR);
+    // }
+
+
+
+
+
+     function saveData(){
+
+     let name=document.getElementById('name').value;
+     let email=document.getElementById('email').value;
+     let pW=document.getElementById('pass').value; 
+    //  let confirmPW=document.getElementById('cpassword').value; 
+    //  const mailF= "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+    //     return mailF.test(String(item).toLowerCase());
+   
+
+
+
+    
+    let user_datas=new Array();
+    user_datas=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+  
+    // if ( name==""){
+    //     alert( name," name is required")
+    //     return;
+    // }
+
+    // else if(!userFormat(name)){
+    //    alert(name,"Enter only alphabet")
+    //    return;
+    // }
+    
+    // else{
+    //     alert("success");
+    // }
+
+    // if ( email===""){
+    //     alert(email,"Email is required")
+    //     return;
+    // }
+
+    // else if(!mailFormat(email)){
+    //    alert(email," Enter a valid email ")
+    //    return;
+    // }
+  
+
+
+    // if ( pW===""){
+    //     alert(password,"password is required")
+    //     return;
+    // }
+
+    // else if(!passFormat(pW)){
+    //    alert(" Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters ")
+    //    return;
+    // }
+
+    // if (confirmPW==="") {
+    //     alert(cpassword,"confirm your password is required")
+    // }
+    
+    // else if(confirmPW!=pW){
+    //    alert(cpassword," password doesn't match")
+    //    return;
+    // }
+ 
+   if(name==="" ){
+        alert("Enter a name")  ;
+        return; 
+   }
+
+   else if(email==="" ){
+        alert("Enter a email id")  ;
+        return; 
+   }
+
+
+   else if(pW==="" ){
+        alert("Enter a password")  ;
+        return; 
+   }
+  
+   else if(user_datas.some((item)=>{
+        return item.email==email;
+    })){
+        alert("Already exist");
+        return;
+    }
+
+
+    
+    // else if(!mailFormat(email)){
+    //    alert(" Enter a valid email ")
+    //    return;
+    // }
+
+    // else if(confirmPW!=pW){
+    //    alert("password doesn't match")
+    //    return;
+    // }
+   
+    else{
+        user_datas.push({
+            "name":name,
+            "email":email,
+            "password":pW,
+            // "confirm password":password
+        })
+       localStorage.setItem("users",JSON.stringify(user_datas)); 
+
+       alert("user created")
+
+    }
+
+    }
+
+
+    let clear=document.querySelector("button");
+    let ip=document.querySelectorAll("input");
+     
+    clear.addEventListener('click',()=>{
+       ip.forEach(input=>input.value='');
+    });
+
+
+    
+   
+
+
+
+
+
+ </script>
+</body>
+</html>
